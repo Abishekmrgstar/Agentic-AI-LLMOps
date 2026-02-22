@@ -1,15 +1,25 @@
-# AI Trip Planner
+# 🌍 AI Trip Planner
+
+[![Python](https://skillicons.dev/icons?i=python)](https://www.python.org/)
+[![FastAPI](https://skillicons.dev/icons?i=fastapi)](https://fastapi.tiangolo.com/)
+[![Docker](https://skillicons.dev/icons?i=docker)](https://www.docker.com/)
+[![AWS](https://skillicons.dev/icons?i=aws)](https://aws.amazon.com/)
+[![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/features/actions)
 
 Agentic travel planner with a FastAPI backend, Streamlit frontend, LangGraph orchestration, and optional LangSmith tracing and alerting.
 
-## What it does
+## 🚀 Tech Stack
 
-- Accepts a user prompt for a trip plan.
-- Uses a LangGraph agent with tools to collect weather, places, and cost info.
-- Returns a structured plan in the UI.
-- Supports Docker, ECR/ECS/App Runner deployment, and GitHub Actions CI/CD.
+![Tech Stack](https://skillicons.dev/icons?i=python,fastapi,docker,aws,githubactions&perline=5)
 
-## Project structure
+## ✨ What it does
+
+- 💬 Accepts a user prompt for a trip plan.
+- 🤖 Uses a LangGraph agent with tools to collect weather, places, and cost info.
+- 📋 Returns a structured plan in the UI.
+- 🐳 Supports Docker, ECR/ECS/App Runner deployment, and GitHub Actions CI/CD.
+
+## 📁 Project structure
 
 ```
 AI_Trip_Planner/
@@ -31,7 +41,7 @@ AI_Trip_Planner/
 	.github/workflows/deploy.yml # GitHub Actions -> ECR
 ```
 
-## How the agent is built
+## 🤖 How the agent is built
 
 The agent is defined in [agent/agentic_workflow.py](agent/agentic_workflow.py):
 
@@ -62,6 +72,11 @@ Available tools:
 - **Place Search**: `search_attractions`, `search_restaurants`, `search_activities`, `search_transportation`
 - **Expense Calculator**: `estimate_total_hotel_cost`, `calculate_total_expense`, `calculate_daily_expense_budget`
 - **Currency Converter**: `convert_currency`
+
+`Agent` uses the system prompt from [prompt_library/prompt.py](prompt_library/prompt.py) and binds tools for function calls.
+
+## 💻 Local run (no Docker)
+
 1) Create and activate a virtual environment.
 2) Install dependencies:
 
@@ -96,7 +111,18 @@ streamlit run streamlit_app.py
 Backend: http://localhost:8000
 Frontend: http://localhost:8501
 
-## Docker
+## 🐳 Docker
+
+### Docker Containers
+
+The application runs two containers:
+
+| Container | Service | Port | Purpose |
+|-----------|---------|------|---------|
+| `backend` | FastAPI | 8000 | REST API that handles agent execution |
+| `frontend` | Streamlit | 8501 | User interface for trip planning |
+
+Both containers are built from the same Dockerfile but run different commands via `supervisord`.
 
 ### Build and run with Docker Compose
 
@@ -117,7 +143,25 @@ docker run -p 8000:8000 -p 8501:8501 trip-planner:latest
 
 The image uses `supervisord` to run both FastAPI and Streamlit.
 
-## AWS ECR + ECS (manual)
+### Adding the Agent Graph Image
+
+The agent automatically generates a graph visualization (`my_graph.png`) on each request. To include it in your README or documentation:
+
+1. The graph is saved to the working directory when you run a query
+2. Find `my_graph.png` in the project root
+3. Add it to your README:
+
+```markdown
+![Agent Graph](my_graph.png)
+```
+
+Or upload it to your repository and reference it:
+
+```markdown
+![Agent Graph](https://raw.githubusercontent.com/username/repo/main/my_graph.png)
+```
+
+## ☁️ AWS ECR + ECS (manual)
 
 The script [deploy-aws.sh](deploy-aws.sh) builds and pushes to ECR, then registers an ECS task and creates a service.
 
@@ -135,11 +179,11 @@ This creates:
 - ECS cluster `trip-planner-cluster`
 - ECS service `trip-planner-service`
 
-## AWS App Runner (optional)
+## 🏃 AWS App Runner (optional)
 
 [apprunner-config.json](apprunner-config.json) defines a service that pulls the ECR image and exposes port 8501 (Streamlit). Update the runtime env vars before use.
 
-## GitHub Actions (ECR push)
+## 🔄 GitHub Actions (ECR push)
 
 The workflow in [.github/workflows/deploy.yml](.github/workflows/deploy.yml) builds and pushes to ECR on every `main` push.
 
@@ -149,11 +193,11 @@ Required GitHub secrets:
 
 The workflow tags the image as both `latest` and the commit SHA.
 
-## Public availability
+## 🌐 Public availability
 
 When ECS/App Runner is configured with public networking, the service becomes publicly accessible via the AWS-generated URL or load balancer. You must open the correct ports (8000 for backend, 8501 for frontend) and use a public subnet with `assignPublicIp=ENABLED`.
 
-## Observability (LangSmith)
+## 📊 Observability (LangSmith)
 
 Tracing is enabled via `LANGCHAIN_TRACING_V2=true` and `LANGCHAIN_API_KEY` in `.env`. Alerts are handled in [utils/langsmith_monitor.py](utils/langsmith_monitor.py) with three modes:
 
@@ -169,12 +213,12 @@ ALERT_LATENCY_SECONDS=5
 ALERT_TOKEN_THRESHOLD=50
 ```
 
-## Security notes
+## 🔒 Security notes
 
 - Never commit `.env` or any API keys.
 - Use GitHub secrets or AWS Secrets Manager for production.
 
-## Troubleshooting
+## 🛠️ Troubleshooting
 
 - If tools fail, check tool schemas and the LLM function-call output.
 - If tracing is missing, verify `LANGCHAIN_API_KEY` and project name.
