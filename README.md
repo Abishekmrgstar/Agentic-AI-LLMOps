@@ -1,24 +1,25 @@
-# 🌍 AI Trip Planner
-
+🚀 Agentic AI Platform with LLMOps & Observability
 [![Python](https://skillicons.dev/icons?i=python)](https://www.python.org/)
 [![FastAPI](https://skillicons.dev/icons?i=fastapi)](https://fastapi.tiangolo.com/)
 [![Docker](https://skillicons.dev/icons?i=docker)](https://www.docker.com/)
 [![AWS](https://skillicons.dev/icons?i=aws)](https://aws.amazon.com/)
 [![GitHub Actions](https://skillicons.dev/icons?i=githubactions)](https://github.com/features/actions)
 
-Agentic travel planner with a FastAPI backend, Streamlit frontend, LangGraph orchestration, and optional LangSmith tracing and alerting.
+A production-style Agentic AI system built with LangGraph, featuring multi-agent orchestration, tool integration, monitoring, CI/CD, and cloud deployment.
 
 ## 🚀 Tech Stack
 
 ![Tech Stack](https://skillicons.dev/icons?i=python,fastapi,docker,aws,githubactions&perline=5)
 
-## ✨ What it does
+## 🧠 System Overview
 
-- 💬 Accepts a user prompt for a trip plan.
-- 🤖 Uses a LangGraph agent with tools to collect weather, places, and cost info.
-- 📋 Returns a structured plan in the UI.
-- 🐳 Supports Docker, ECR/ECS/App Runner deployment, and GitHub Actions CI/CD.
-
+- 🔄 Multi-agent workflow orchestration using LangGraph
+- 🛠 Tool-augmented reasoning (weather, locations, cost estimation)
+- 📊 Observability with LangSmith tracing
+- 🚨 LLM monitoring & alerting support
+- 🌐 FastAPI backend + Streamlit frontend
+- 🐳 Containerized & cloud-deployable
+  
 ## 📁 Project structure
 
 ```
