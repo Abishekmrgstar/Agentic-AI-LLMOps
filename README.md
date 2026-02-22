@@ -212,6 +212,15 @@ ALERT_NOTIFY_MODE=log
 ALERT_LATENCY_SECONDS=5
 ALERT_TOKEN_THRESHOLD=50
 ```
+## Images
+<img width="1600" height="699" alt="image" src="https://github.com/user-attachments/assets/67638a20-e842-4031-95df-f3adfb000260" />
+<img width="1600" height="809" alt="image" src="https://github.com/user-attachments/assets/a209dc1b-f51f-4c98-acc7-3ae3c1f5bd02" />
+<img width="1600" height="882" alt="image" src="https://github.com/user-attachments/assets/2d8311a2-d117-40ad-b0e6-91cbd547da61" />
+<img width="1600" height="788" alt="image" src="https://github.com/user-attachments/assets/c90fb2f8-87bf-476a-984b-9bdccedc60c7" />
+<img width="1600" height="985" alt="image" src="https://github.com/user-attachments/assets/df1d8963-4b84-4071-93c1-1aa29a159451" />
+<img width="1600" height="938" alt="image" src="https://github.com/user-attachments/assets/7e5183ac-151f-48f5-9573-b532a50d864c" />
+
+
 
 ## 🔒 Security notes
 
